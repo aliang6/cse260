@@ -1,20 +1,29 @@
-public class GenericStackWithArray{
-	private E[] list = new E[10];
-	private int pointer = 0;
+public class GenericStackWithArray<E>{
+	private E[] list;
+	private int pointer;
+
+	public GenericStackWithArray(){
+		list = (E[])(new Object[1]);
+		pointer = 0;
+	}
 
 	public int getSize() {
 		return pointer;
 	}
 	public E peek() {
-		return list.[getSize() - 1];
+		if(pointer == 0){
+			return null;
+		}
+		return list[getSize() - 1];
 	}
 	public void push(E o) {
-		list[pointer++] = o;
 		if(pointer == list.length){
-			E[] newList = new E[pointer*2];
-			System.arrayCopy(list, 0, newList, 0, pointer - 1);
+			E[] newList = (E[])(new Object[pointer*2]);
+			System.arraycopy(list, 0, newList, 0, pointer);
 			list = newList;
 		}
+		list[pointer++] = o;
+		System.out.println(pointer);
 	}
 	public E pop() {
 		if(getSize() == 0){
@@ -25,10 +34,16 @@ public class GenericStackWithArray{
 		return o;
 	}
 	public boolean isEmpty() {
-		return list.getSize() == 0;
+		return getSize() == 0;
 	}
 	@Override // Java annotation: also used at compile time to
 	public String toString() { // detect override errors
-		return "stack: " + list.toString();
+		String ret = "stack: ";
+		for(E element : list){
+			if(element != null)
+				ret += element.toString() + " ";
+		}
+		ret += "\n";
+		return ret;
 	}
 }

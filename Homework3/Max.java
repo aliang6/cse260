@@ -1,4 +1,4 @@
-public class Max{
+public class Max<E>{
 	public static <E extends Comparable<E>> E max(E[] list){
 		if(list.length == 0){
 			return null;
@@ -10,9 +10,11 @@ public class Max{
 				break;
 			}
 		}
+
 		if(nullArray){
 			return null;
 		}
+
 		E max = list[0];
 		for(E element : list){
 			if(element.compareTo(max) > 0){

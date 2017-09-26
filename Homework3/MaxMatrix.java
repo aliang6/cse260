@@ -1,4 +1,4 @@
-public class MaxMatrix{
+public class MaxMatrix<E>{
 	public static <E extends Comparable<E>> E max(E[][] list){
 		if(list.length == 0 || list[0].length == 0){
 			return null;
@@ -12,7 +12,7 @@ public class MaxMatrix{
 				}
 			}
 		}
-		
+
 		if(nullMatrix){
 			return null;
 		}

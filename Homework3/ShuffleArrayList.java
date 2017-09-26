@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
 public class ShuffleArrayList{
-	public static <E> void shuffle(E[] list){
-		for(int i = 0; i < list.length; i++){
-			int random = Math.random()*(list.length - 1);
-			E temp = list[random];
-			list[random] = list[i];
-			list[i] = temp;
+	public static <E> void shuffle(ArrayList<E> list){
+		for(int i = 0; i < list.size(); i++){
+			int random = (int)(Math.random()*(list.size() - 1));
+			E temp = list.get(random);
+			list.set(random, list.get(i));
+			list.set(i, temp);
 		}
 	}
 } 
